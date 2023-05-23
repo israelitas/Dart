@@ -6,10 +6,7 @@ void main() {
   const String nome = "Israel Andreotti";
   final String apelido = "Isra";
   var time = "inter";
-
-  for(int i = 1; i <= 10; i++) {
-    print("Conclui $i voltas");
-  }
+  int energia = 100;
 
   List<dynamic> israel = [idade, altura, nome, apelido, geek, time];
 
@@ -21,5 +18,10 @@ void main() {
   print("Tenho ${israel[1]} de altura");
   print("Eu torço (infelizmente) para o ${israel[5]}");
 
+  while(energia > 0) {
+    print("Mais uma repetição: $energia% de energia");
+
+    energia -= 8;
+  }
 
 }
