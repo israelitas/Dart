@@ -1,5 +1,6 @@
 void main() {
 
+  //informações sobre persona
   int idade = 21;
   double altura = 1.77;
   bool geek = false;
@@ -11,6 +12,7 @@ void main() {
 
   print(israel);
 
+  //o número dentro dos colchetes se refere ao indice do array
   print("Meu apelido é ${israel[3]} ");
   print("Meu nome é ${israel[2]}");
   print("Tenho ${israel[0]} anos");

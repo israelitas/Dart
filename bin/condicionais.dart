@@ -2,6 +2,7 @@ void main () {
   int idade = 21;
   bool maiorDeIdade;
 
+  //verificação de maior de idade
   if(idade >= 18) {
     maiorDeIdade = true;
   } else {

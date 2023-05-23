@@ -7,6 +7,7 @@ void main() {
   final String apelido = "Isra";
   var time = "inter";
 
+
   for(int i = 1; i <= 10; i++) {
     print("Conclui $i voltas");
   }
@@ -15,6 +16,7 @@ void main() {
 
   print(israel);
 
+  //o número dentro dos colchetes se refere ao indice do array
   print("Meu apelido é ${israel[3]} ");
   print("Meu nome é ${israel[2]}");
   print("Tenho ${israel[0]} anos");
