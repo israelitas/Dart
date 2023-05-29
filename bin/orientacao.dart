@@ -1,14 +1,16 @@
 void main() {
-  String fruta = "Laranja";
+  String nome = "Laranja";
   double peso = 97.2;
   String cor = "Verde e Amarela";
   String sabor = "Doce";
   int diasDesdeColheita = 30;
-  bool estaMadura = funcEstaMadura(diasDesdeColheita);
+  bool isMadura;
 
-  print(funcEstaMadura(22));
-
-  mostrarMadura("maça", 25, cor: "Vermelha");
+  if (diasDesdeColheita >= 30) {
+    isMadura = true;
+  } else {
+    isMadura = false;
+  }
 }
 
 /*
@@ -46,4 +48,62 @@ bool funcEstaMadura (int dias) {
   } else {
     return false;
   }
+}
+
+class Fruta {
+  String nome;
+  double peso;
+  String sabor;
+  String cor;
+  int diasDesdeColheita;
+  bool? isMadura;
+
+  Fruta(this.nome, this.peso, this.sabor, this.cor, this.diasDesdeColheita, {this.isMadura});
+
+  estaMadura(int diasParaMadura) {
+    isMadura = diasDesdeColheita >= diasParaMadura;
+    print("A sua $nome foi colhida a $diasDesdeColheita dias e precisa de $diasParaMadura dias para ficar madura. Ela está madura? $isMadura");
+  }
+}
+
+class Alimento {
+  String nome;
+  double peso;
+  String cor;
+
+  Alimento(this.nome, this.peso, this.cor);
+
+}
+
+class Legumes {
+  String nome;
+  double peso;
+  String cor;
+  bool isPrecisaCozinhar;
+
+  Legumes(this.nome, this.peso, this.cor, this.isPrecisaCozinhar);
+}
+
+class Citricas {
+  String nome;
+  double peso;
+  String cor;
+  int diaDesdeColheita;
+  bool? isMadura;
+  double nivelAzedo;
+
+  Citricas(this.nome, this.peso, this.cor, this.diaDesdeColheita, this.isMadura,
+      this.nivelAzedo);
+}
+
+class Nozes {
+  String nome;
+  double peso;
+  String cor;
+  int diaDesdeColheita;
+  bool? isMadura;
+  double porcentagemOleoNatural;
+
+  Nozes(this.nome, this.peso, this.cor, this.diaDesdeColheita, this.isMadura,
+      this.porcentagemOleoNatural);
 }
