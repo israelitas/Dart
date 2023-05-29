@@ -11,6 +11,19 @@ void main() {
   } else {
     isMadura = false;
   }
+
+  Legumes mandioca = Legumes ("Aipim", 200, "marrom", true);
+  Frutas banana = Frutas("Maça", 70, "Doce", "Amarela", 10);
+  Nozes macadamia = Nozes("Macadâmia", 4, "Branco", "Doce", 24, 42);
+  Citricas laranja = Citricas("Laranja", 67, "Laranja", "Azedo", 8, 6);
+
+  mandioca.printAlimento();
+  banana.printAlimento();
+  macadamia.printAlimento();
+  laranja.printAlimento();
+
+  mandioca.cozinhar();
+  laranja.fazerSuco();
 }
 
 /*
@@ -28,21 +41,22 @@ void main() {
 *
 * */
 
-                                    //parâmetro opcional
-mostrarMadura (String nome, int dias, {String cor = "azul"}) { //se eu não passar parâmetros a cor padrão será azul
+//parâmetro opcional
+mostrarMadura(String nome, int dias, {String cor = "azul"}) {
+  //se eu não passar parâmetros a cor padrão será azul
   if (dias > 20) {
-     print("A $nome está madura");
+    print("A $nome está madura");
   } else {
     print("A $nome não está madura");
   }
 
-  if(cor != null) {
+  if (cor != null) {
     print("A $nome é $cor");
   }
 }
 
 // Define quantos dias mínimos para a fruta estar madura
-bool funcEstaMadura (int dias) {
+bool funcEstaMadura(int dias) {
   if (dias > 20) {
     return true;
   } else {
@@ -50,60 +64,94 @@ bool funcEstaMadura (int dias) {
   }
 }
 
-class Fruta {
-  String nome;
-  double peso;
+class Frutas extends Alimentos {
   String sabor;
-  String cor;
   int diasDesdeColheita;
   bool? isMadura;
 
-  Fruta(this.nome, this.peso, this.sabor, this.cor, this.diasDesdeColheita, {this.isMadura});
+  Frutas(String nome, double peso, this.sabor, String cor, this.diasDesdeColheita,
+      {this.isMadura})
+      : super(nome, peso, cor);
 
   estaMadura(int diasParaMadura) {
     isMadura = diasDesdeColheita >= diasParaMadura;
-    print("A sua $nome foi colhida a $diasDesdeColheita dias e precisa de $diasParaMadura dias para ficar madura. Ela está madura? $isMadura");
+    print(
+        "A sua $nome foi colhida a $diasDesdeColheita dias e precisa de $diasParaMadura dias para ficar madura. Ela está madura? $isMadura");
+  }
+
+  void fazerSuco() {
+    print("Você fez um suco de $nome");
   }
 }
 
-class Alimento {
+class Alimentos {
   String nome;
   double peso;
   String cor;
 
-  Alimento(this.nome, this.peso, this.cor);
+  Alimentos(this.nome, this.peso, this.cor);
 
+  void printAlimento() {
+    print("Este(a) $nome pesa $peso gramas e é $cor");
+  }
 }
 
-class Legumes {
-  String nome;
-  double peso;
-  String cor;
+class Legumes extends Alimentos implements Bolo {
   bool isPrecisaCozinhar;
 
-  Legumes(this.nome, this.peso, this.cor, this.isPrecisaCozinhar);
+  Legumes(String nome, double peso, String cor, this.isPrecisaCozinhar)
+      : super(nome, peso, cor);
+
+  void cozinhar() {
+    if (isPrecisaCozinhar) {
+      print("Pronto! O $nome está cozinhando");
+    } else {
+      print("Não precisa cozinhar");
+    }
+  }
+
+  @override
+  void assar() {
+    // TODO: implement assar
+  }
+
+  @override
+  void fazerMassa() {
+    // TODO: implement fazerMassa
+  }
+
+  @override
+  void separarIngredientes() {
+    // TODO: implement separarIngredientes
+  }
 }
 
-class Citricas {
-  String nome;
-  double peso;
-  String cor;
-  int diaDesdeColheita;
-  bool? isMadura;
-  double nivelAzedo;
+class Citricas extends Frutas {
+  int nivelAzedo;
 
-  Citricas(this.nome, this.peso, this.cor, this.diaDesdeColheita, this.isMadura,
-      this.nivelAzedo);
+  Citricas(String nome, double peso, String cor, String sabor,
+      int diasDesdeColheita, this.nivelAzedo)
+      : super(nome, peso, cor, sabor, diasDesdeColheita);
+
+  void existeRefri (bool existe) {
+    if(existe) {
+      print("Existe refrigerante de $nome");
+    } else {
+      print("Não existe refri de $nome");
+    }
+  }
 }
 
-class Nozes {
-  String nome;
-  double peso;
-  String cor;
-  int diaDesdeColheita;
-  bool? isMadura;
+class Nozes extends Frutas{
   double porcentagemOleoNatural;
 
-  Nozes(this.nome, this.peso, this.cor, this.diaDesdeColheita, this.isMadura,
-      this.porcentagemOleoNatural);
+  Nozes(String nome, double peso, String cor, String sabor, int diasDesdeColheita,
+       this.porcentagemOleoNatural) : super(nome, peso, cor, sabor, diasDesdeColheita);
+}
+
+abstract class Bolo {
+  void separarIngredientes();
+  void fazerMassa();
+  void assar();
+
 }
