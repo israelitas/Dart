@@ -17,7 +17,15 @@ void main () {
   //registrarPrecos.remove("São Paulo");
 
   //imprime o map
-  print(registrarPrecos);
+  //print(registrarPrecos);
+
+  var meuNumero = "7.1";
+  print(meuNumero);
+
+  meuNumero = "7.9";
+  print(meuNumero);
+
+
 }
 
 Set<String> registrarDestinos(String destino, Set<String> banco) {
