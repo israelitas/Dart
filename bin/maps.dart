@@ -11,6 +11,7 @@ void main () {
   registrarPrecos["Porto Alegre"] = 750;
   registrarPrecos["São Paulo"] = 1050;
   registrarPrecos["Curitiba"] = 900;
+  registrarPrecos["Floripa"] = 600;
 
 
   //remover elementos do map
@@ -19,13 +20,11 @@ void main () {
   //imprime o map
   //print(registrarPrecos);
 
-  var meuNumero = "7.1";
-  print(meuNumero);
+  dynamic meuNumero = "7.1";
+  print(meuNumero.runtimeType);
 
-  meuNumero = "7.9";
-  print(meuNumero);
-
-
+  meuNumero = 9;
+  print(meuNumero.runtimeType);
 }
 
 Set<String> registrarDestinos(String destino, Set<String> banco) {
